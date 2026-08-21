@@ -1,4 +1,15 @@
+import Link from "next/link";
 import { KONTAK } from "@/lib/data";
+
+const FOOTER_PRODUK = [
+  { label: "Asuransi Kendaraan", href: "/asuransi-kendaraan" },
+  { label: "Asuransi Properti", href: "/asuransi-properti" },
+  { label: "Engineering Insurance", href: "/asuransi-engineering" },
+  { label: "Machinery Insurance", href: "/asuransi-machinery" },
+  { label: "Asuransi Kargo", href: "/asuransi-kargo" },
+  { label: "Liability Insurance", href: "/asuransi-liability" },
+  { label: "Surety Bond", href: "/asuransi-surety-bond" },
+];
 
 export default function Footer() {
   return (
@@ -11,8 +22,8 @@ export default function Footer() {
         <div>
           <h4 className="text-[0.82rem] font-bold tracking-[1.2px] uppercase text-gold2 mb-4">Produk</h4>
           <ul className="flex flex-col gap-2">
-            {["Asuransi Kendaraan","Asuransi Properti","Engineering Insurance","Asuransi Kargo","Liability Insurance","Surety Bond"].map(p => (
-              <li key={p}><a href="#produk" className="text-sm text-white/50 no-underline hover:text-gold2 transition-colors">{p}</a></li>
+            {FOOTER_PRODUK.map(p => (
+              <li key={p.href}><Link href={p.href} className="text-sm text-white/50 no-underline hover:text-gold2 transition-colors">{p.label}</Link></li>
             ))}
           </ul>
         </div>

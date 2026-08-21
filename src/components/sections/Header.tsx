@@ -98,8 +98,7 @@ export default function Header() {
             <span className={`text-[0.55rem] transition-transform duration-200 inline-block ${produkOpen ? "rotate-180" : ""}`}>▼</span>
           </button>
 
-          {produkOpen && (
-            <div className="absolute top-[calc(100%+16px)] left-1/2 -translate-x-1/2 w-[680px] bg-white rounded-[16px] shadow-[0_24px_64px_rgba(0,0,0,0.18)] border border-black/6 p-5 grid grid-cols-3 gap-x-4 gap-y-1">
+          <div className={`absolute top-[calc(100%+16px)] left-1/2 -translate-x-1/2 w-[680px] bg-white rounded-[16px] shadow-[0_24px_64px_rgba(0,0,0,0.18)] border border-black/6 p-5 grid-cols-3 gap-x-4 gap-y-1 ${produkOpen ? "grid" : "hidden"}`}>
               <div className="absolute -top-[7px] left-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-white rotate-45 border-t border-l border-black/6 rounded-tl-sm" />
               {NAV_CLUSTERS.map(c => (
                 <div key={c.href} className="flex flex-col">
@@ -129,8 +128,7 @@ export default function Header() {
                   💬 Konsultasi Gratis
                 </a>
               </div>
-            </div>
-          )}
+          </div>
         </div>
 
         <Link href="/artikel" className="text-white/75 text-sm font-medium hover:text-gold2 transition-colors no-underline">
@@ -161,8 +159,7 @@ export default function Header() {
       </button>
 
       {/* MOBILE MENU */}
-      {menuOpen && (
-        <div className="absolute top-[68px] left-0 right-0 bg-navy border-t border-gold/20 flex flex-col max-h-[82vh] overflow-y-auto md:hidden pb-4">
+      <div className={`absolute top-[68px] left-0 right-0 bg-navy border-t border-gold/20 flex-col max-h-[82vh] overflow-y-auto md:hidden pb-4 ${menuOpen ? "flex" : "hidden"}`}>
 
           {/* Produk accordion */}
           <button
@@ -173,8 +170,7 @@ export default function Header() {
             <span className={`text-gold text-[0.6rem] transition-transform inline-block ${mobileExpanded ? "rotate-180" : ""}`}>▼</span>
           </button>
 
-          {mobileExpanded && (
-            <div className="bg-navy2/30">
+          <div className={`bg-navy2/30 ${mobileExpanded ? "block" : "hidden"}`}>
               {NAV_CLUSTERS.map(c => (
                 <div key={c.href} className="border-b border-white/5">
                   <Link
@@ -196,8 +192,7 @@ export default function Header() {
                   ))}
                 </div>
               ))}
-            </div>
-          )}
+          </div>
 
           <Link href="/artikel" onClick={() => setMenuOpen(false)} className="text-white/75 px-[5vw] py-3 text-sm font-medium hover:text-gold no-underline border-b border-white/5">
             Artikel
@@ -212,8 +207,7 @@ export default function Header() {
           <a href={`https://wa.me/${KONTAK.wa}`} className="mx-[5vw] mt-4 bg-gold text-navy text-center py-3 rounded-lg font-bold text-sm no-underline">
             Konsultasi Gratis
           </a>
-        </div>
-      )}
+      </div>
     </header>
   );
 }
